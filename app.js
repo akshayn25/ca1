@@ -1,4 +1,3 @@
-//variables
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
 const clearCartBtn = document.querySelector(".clear-cart");
@@ -115,7 +114,7 @@ class UI{
                           <i class="fas fa-chevron-down" data-id=${item.id}></i>
                       </div> `;
       cartContent.appendChild(div);
-
+      document.cookie=item.title+"; expires=0; path=/";
   }
    showCart(){
      cartOverlay.classList.add('transparentBcg') ;
