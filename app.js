@@ -115,7 +115,7 @@ class UI{
                           <i class="fas fa-chevron-down" data-id=${item.id}></i>
                       </div> `;
       cartContent.appendChild(div);
-      document.cookie=item.title"="item.price+"; expires=0; path=/";
+      document.cookie=item.title+"="+item.price+"; expires=0; path=/";
   }
    showCart(){
      cartOverlay.classList.add('transparentBcg') ;
