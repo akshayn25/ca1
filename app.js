@@ -100,6 +100,12 @@ class UI{
       cartItems.innerText = itemsTotal;
       //console.log(cartTotal,cartItems);
   }
+  function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+}
   addCardItem(item){
     const div = document.createElement('div');
     div.classList.add('cart-item');
@@ -115,12 +121,13 @@ class UI{
                           <i class="fas fa-chevron-down" data-id=${item.id}></i>
                       </div> `;
       cartContent.appendChild(div);
-      document.cookie=item.title+"; expires=Wed, 14 Sep 2022 23:00:00 UTC; path=/";
+      setCookie('fruitname',item.title,30);
   }
    showCart(){
      cartOverlay.classList.add('transparentBcg') ;
      cartDOM.classList.add('showCart');
    }
+  
   setupApp(){
      cart = Storage.getCart();
      this.setCartValues(cart);
