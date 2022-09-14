@@ -100,12 +100,6 @@ class UI{
       cartItems.innerText = itemsTotal;
       //console.log(cartTotal,cartItems);
   }
-  setCookie(cName, cValue, expDays) {
-        let date = new Date();
-        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = cValue + "; " + expires + "; path=/";
-}
   addCardItem(item){
     const div = document.createElement('div');
     div.classList.add('cart-item');
@@ -121,13 +115,12 @@ class UI{
                           <i class="fas fa-chevron-down" data-id=${item.id}></i>
                       </div> `;
       cartContent.appendChild(div);
-      setCookie('fruitname',item.title,30);
+      document.cookie=item.title+"; expires=0; path=/";
   }
    showCart(){
      cartOverlay.classList.add('transparentBcg') ;
      cartDOM.classList.add('showCart');
    }
-  
   setupApp(){
      cart = Storage.getCart();
      this.setCartValues(cart);
